@@ -35,7 +35,7 @@ After that you can create cache:
 $cache = new \Limcache\Cache($strategy);
 ```
 
-Since ```\Limcache\Cache``` implements ```\ArrayAccess``` and ```\Countable``` interfaces you can use it mostly as array in most cases: 
+Since ```\Limcache\Cache``` implements ```\ArrayAccess``` and ```\Countable``` interfaces you can use it as array in most cases: 
 
 ```php
 // Save item in cache:
