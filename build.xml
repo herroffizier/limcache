@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="limcache" default="help">
+    <target name="help">
+        <echo>Available commands:
+
+        * cs        - run phpcs
+        * lint      - run php lint
+        * phpunit   - run phpunit
+        * test      - test library
+        * help      - this message</echo>
+    </target>
+
+    <target name="cs">
+        <exec 
+            command="./vendor/bin/phpcs --ignore=./vendor/ --report=full --standard=PSR2 -p ." 
+            passthru="true" 
+            checkreturn="true"
+        />
+    </target>
+
+    <target name="lint">
+        <phplint 
+            haltonfailure="true"
+            deprecatedAsError="true"
+        >
+            <fileset dir=".">
+                <include name="**/*.php"/>
+                <exclude name="vendor/"/>
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="clearreport">
+        <delete includeemptydirs="true" verbose="true">
+            <fileset dir="./test/report">
+                <exclude name=".gitkeep"/>
+                <include name="*"/>
+                <include name="**/*"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="phpunit">
+        <exec 
+            command="./vendor/bin/phpunit --bootstrap=./test/bootstrap.php --coverage-clover=./test/report/coverage.clover --coverage-html=./test/report/  ./test/unit/" 
+            passthru="true" 
+            checkreturn="true"
+        />
+    </target>
+
+    <target name="test">
+        <phingcall target="clearreport"/>
+        <phingcall target="lint"/>
+        <phingcall target="cs"/>
+        <phingcall target="phpunit"/>
+    </target>
+</project>

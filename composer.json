@@ -1,0 +1,23 @@
+{
+    "name": "herroffizier/limcache",
+    "description": "Implementation of various cache algorithms",
+    "keywords": ["cache", "lru", "mru", "judy"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Stolz",
+            "email": "herr.offizier@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "dev-master",
+        "phpunit/phpunit": "~3",
+        "phing/phing": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {"Limcache\\test\\": "test/", "Limcache\\": "src/"}
+    }
+}
