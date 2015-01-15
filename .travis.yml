@@ -11,6 +11,7 @@ install:
 
 before_script:
     - printf "\n" | pecl install judy
+    - phpenv config-add ./test/travis-php.ini
 
 script: ./vendor/bin/phing test
 
