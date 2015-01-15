@@ -9,7 +9,7 @@
 
 namespace Limcache\strategy;
 
-use \Limcache\storage\ArrayFactory;
+use Limcache\storage\ArrayFactory;
 
 abstract class BaseRU implements EvictionStrategyInterface
 {
@@ -80,7 +80,7 @@ abstract class BaseRU implements EvictionStrategyInterface
 
     public function getExpiredKey()
     {
-        if ($this->keys->count() < $this->size) {
+        if (count($this->keys) < $this->size) {
             return;
         }
 

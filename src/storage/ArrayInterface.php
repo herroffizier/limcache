@@ -9,7 +9,7 @@
 
 namespace Limcache\storage;
 
-interface ArrayInterface extends \ArrayAccess
+interface ArrayInterface extends \ArrayAccess, \Countable
 {
     /**
      * Get last inserted offset.
@@ -31,11 +31,4 @@ interface ArrayInterface extends \ArrayAccess
      * @return mixed
      */
     public function last();
-
-    /**
-     * Get item count.
-     *
-     * @return integer
-     */
-    public function count();
 }

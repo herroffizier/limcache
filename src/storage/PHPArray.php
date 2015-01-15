@@ -49,6 +49,11 @@ class PHPArray implements ArrayInterface
         $this->offset = key($this->data);
     }
 
+    public function count()
+    {
+        return count($this->data);
+    }
+
     public function lastOffset()
     {
         return $this->offset;
@@ -62,10 +67,5 @@ class PHPArray implements ArrayInterface
     public function last()
     {
         return end($this->data);
-    }
-
-    public function count()
-    {
-        return count($this->data);
     }
 }

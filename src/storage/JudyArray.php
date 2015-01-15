@@ -51,6 +51,11 @@ class JudyArray implements ArrayInterface
         $this->offset = $this->data->last();
     }
 
+    public function count()
+    {
+        return $this->data->count();
+    }
+
     public function lastOffset()
     {
         return $this->offset;
@@ -64,10 +69,5 @@ class JudyArray implements ArrayInterface
     public function last()
     {
         return $this->data[$this->data->last()];
-    }
-
-    public function count()
-    {
-        return $this->data->count();
     }
 }

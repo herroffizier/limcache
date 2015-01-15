@@ -12,7 +12,7 @@ namespace Limcache;
 use Limcache\strategy\EvictionStrategyInterface;
 use Limcache\storage\ArrayFactory;
 
-class Cache implements \ArrayAccess
+class Cache implements \ArrayAccess, \Countable
 {
     /**
      * Eviction strategy.
@@ -99,14 +99,9 @@ class Cache implements \ArrayAccess
         $this->strategy->afterDeleteKey($offset);
     }
 
-    /**
-     * Return item count.
-     *
-     * @return integer
-     */
     public function count()
     {
-        return $this->cache->count();
+        return count($this->cache);
     }
 
     /**
