@@ -10,6 +10,7 @@ install:
     - composer install --no-interaction --prefer-source
 
 before_script:
+    - apt-get install libjudy-dev
     - printf "\n" | pecl install judy
     - phpenv config-add ./test/travis-php.ini
 
