@@ -1,6 +1,6 @@
 {
     "name": "herroffizier/limcache",
-    "description": "Implementation of various cache algorithms",
+    "description": "Non-persistent cache manager with LRU and MRU algorithms",
     "keywords": ["cache", "lru", "mru", "judy"],
     "license": "MIT",
     "authors": [
