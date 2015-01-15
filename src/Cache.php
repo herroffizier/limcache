@@ -9,8 +9,8 @@
 
 namespace Limcache;
 
-use \Limcache\strategy\EvictionStrategyInterface;
-use \Limcache\storage\ArrayFactory;
+use Limcache\strategy\EvictionStrategyInterface;
+use Limcache\storage\ArrayFactory;
 
 class Cache implements \ArrayAccess
 {
@@ -24,7 +24,7 @@ class Cache implements \ArrayAccess
     /**
      * Cache.
      *
-     * @var ArrayFactory
+     * @var \Limcache\storage\ArrayInterface
      */
     protected $cache = [];
 
@@ -99,16 +99,31 @@ class Cache implements \ArrayAccess
         $this->strategy->afterDeleteKey($offset);
     }
 
+    /**
+     * Return item count.
+     *
+     * @return integer
+     */
     public function count()
     {
         return $this->cache->count();
     }
 
+    /**
+     * Return cache hits.
+     *
+     * @return integer
+     */
     public function getHits()
     {
         return $this->hits;
     }
 
+    /**
+     * Return cache misses.
+     *
+     * @return integer
+     */
     public function getMisses()
     {
         return $this->misses;
