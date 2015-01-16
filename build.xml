@@ -42,7 +42,7 @@
 
     <target name="phpunit">
         <exec 
-            command="./vendor/bin/phpunit --bootstrap=./test/bootstrap.php --coverage-clover=./test/report/coverage.clover --coverage-html=./test/report/  ./test/unit/" 
+            command="./vendor/bin/phpunit --coverage-clover=./test/report/coverage.clover --coverage-html=./test/report/  ./test/unit/" 
             passthru="true" 
             checkreturn="true"
         />

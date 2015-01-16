@@ -13,7 +13,7 @@ class PHPArray implements ArrayInterface
 {
     protected $type = null;
     protected $data = [];
-    protected $offset = null;
+    protected $lastInserted = null;
 
     public function __construct($type)
     {
@@ -34,11 +34,11 @@ class PHPArray implements ArrayInterface
     {
         if ($offset !== null) {
             $this->data[$offset] = $value;
-            $this->offset = $offset;
+            $this->lastInserted = $offset;
         } else {
             $this->data[] = $value;
             end($this->data);
-            $this->offset = key($this->data);
+            $this->lastInserted = key($this->data);
         }
     }
 
@@ -46,7 +46,7 @@ class PHPArray implements ArrayInterface
     {
         unset($this->data[$offset]);
         end($this->data);
-        $this->offset = key($this->data);
+        $this->lastInserted = key($this->data);
     }
 
     public function count()
@@ -54,9 +54,9 @@ class PHPArray implements ArrayInterface
         return count($this->data);
     }
 
-    public function lastOffset()
+    public function lastInsertedOffset()
     {
-        return $this->offset;
+        return $this->lastInserted;
     }
 
     public function first()

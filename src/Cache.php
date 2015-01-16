@@ -26,7 +26,7 @@ class Cache implements \ArrayAccess, \Countable
      *
      * @var \Limcache\storage\ArrayInterface
      */
-    protected $cache = [];
+    protected $cache = null;
 
     /**
      * Cache hits.

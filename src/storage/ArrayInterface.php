@@ -16,7 +16,7 @@ interface ArrayInterface extends \ArrayAccess, \Countable
      *
      * @return mixed
      */
-    public function lastOffset();
+    public function lastInsertedOffset();
 
     /**
      * Get first item in array.

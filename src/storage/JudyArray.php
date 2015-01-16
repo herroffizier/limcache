@@ -12,7 +12,8 @@ namespace Limcache\storage;
 class JudyArray implements ArrayInterface
 {
     protected $data = null;
-    protected $offset = null;
+
+    protected $lastInserted     = null;
 
     public function __construct($type)
     {
@@ -38,17 +39,19 @@ class JudyArray implements ArrayInterface
     {
         if ($offset !== null) {
             $this->data[$offset] = $value;
-            $this->offset = $offset;
+            $this->lastInserted = $offset;
         } else {
             $this->data[] = $value;
-            $this->offset = $this->data->last();
+            $this->lastInserted = $this->data->last();
         }
     }
 
     public function offsetUnset($offset)
     {
+        if ($offset === $this->lastInserted) {
+            $this->lastInserted = $this->data->prev($this->lastInserted);
+        }
         unset($this->data[$offset]);
-        $this->offset = $this->data->last();
     }
 
     public function count()
@@ -56,9 +59,9 @@ class JudyArray implements ArrayInterface
         return $this->data->count();
     }
 
-    public function lastOffset()
+    public function lastInsertedOffset()
     {
-        return $this->offset;
+        return $this->lastInserted;
     }
 
     public function first()

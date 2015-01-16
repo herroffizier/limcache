@@ -468,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9f4902da954b60bf44c94c8e28f0d41753700a53"
+                "reference": "65c8d2da98c1c86bfb5589a0f9264c043dde93ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9f4902da954b60bf44c94c8e28f0d41753700a53",
-                "reference": "9f4902da954b60bf44c94c8e28f0d41753700a53",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/65c8d2da98c1c86bfb5589a0f9264c043dde93ab",
+                "reference": "65c8d2da98c1c86bfb5589a0f9264c043dde93ab",
                 "shasum": ""
             },
             "require": {
@@ -528,7 +528,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2015-01-15 23:21:11"
+            "time": "2015-01-16 05:00:42"
         },
         {
             "name": "symfony/yaml",

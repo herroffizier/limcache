@@ -34,6 +34,8 @@ abstract class BaseRU implements EvictionStrategyInterface
      */
     protected $indexes = null;
 
+    protected $keyCount = 0;
+
     /**
      * Get border (top or bottom) key from key list.
      *
@@ -52,7 +54,7 @@ abstract class BaseRU implements EvictionStrategyInterface
     protected function pushKey($key)
     {
         $this->keys[] = $key;
-        $this->indexes[$key] = $this->keys->lastOffset();
+        $this->indexes[$key] = $this->keys->lastInsertedOffset();
     }
 
     public function afterGetKey($key)
@@ -68,6 +70,8 @@ abstract class BaseRU implements EvictionStrategyInterface
         }
 
         $this->pushKey($key);
+
+        $this->keyCount++;
     }
 
     public function afterDeleteKey($key)
@@ -76,14 +80,18 @@ abstract class BaseRU implements EvictionStrategyInterface
             $this->keys[$this->indexes[$key]],
             $this->indexes[$key]
         );
+
+        $this->keyCount--;
     }
 
     public function getExpiredKey()
     {
-        if (count($this->keys) < $this->size) {
+        if ($this->keyCount < $this->size) {
             return;
         }
 
-        return $this->getBorderKey();
+        $key = $this->getBorderKey();
+
+        return $key;
     }
 }
