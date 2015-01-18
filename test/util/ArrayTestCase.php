@@ -18,6 +18,8 @@ abstract class ArrayTestCase extends \PHPUnit_Framework_TestCase
      */
     public function testArrayAccessInterface($array)
     {
+        $this->assertInstanceOf('\ArrayAccess', $array);
+
         $this->assertFalse(isset($array['key1']));
         $array['key1'] = 'test';
         $this->assertTrue(isset($array['key1']));
@@ -31,6 +33,8 @@ abstract class ArrayTestCase extends \PHPUnit_Framework_TestCase
      */
     public function testCountableInterface($array)
     {
+        $this->assertInstanceOf('\Countable', $array);
+
         $this->assertEquals(0, count($array));
         $array['key1'] = 'test';
         $this->assertEquals(1, count($array));

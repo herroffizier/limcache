@@ -33,8 +33,10 @@ class PHPArray implements ArrayInterface
     public function offsetSet($offset, $value)
     {
         if ($offset !== null) {
+            if (!isset($this->data[$offset])) {
+                $this->lastInserted = $offset;
+            }
             $this->data[$offset] = $value;
-            $this->lastInserted = $offset;
         } else {
             $this->data[] = $value;
             end($this->data);
@@ -61,11 +63,11 @@ class PHPArray implements ArrayInterface
 
     public function first()
     {
-        return reset($this->data);
+        return count($this->data) ? reset($this->data) : null;
     }
 
     public function last()
     {
-        return end($this->data);
+        return count($this->data) ? end($this->data) : null;
     }
 }

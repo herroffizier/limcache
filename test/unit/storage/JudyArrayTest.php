@@ -9,11 +9,11 @@
 
 namespace Limcache\test\unit\storage;
 
-use \Limcache\test\util\ArrayTestCase;
-use \Limcache\storage\ArrayFactory;
-use \Limcache\storage\JudyArray;
+use Limcache\test\util\ArrayInterfaceTestCase;
+use Limcache\storage\ArrayFactory;
+use Limcache\storage\JudyArray;
 
-class JudyArrayTest extends ArrayTestCase
+class JudyArrayTest extends ArrayInterfaceTestCase
 {
     public function arrayProvider()
     {

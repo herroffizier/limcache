@@ -38,8 +38,10 @@ class JudyArray implements ArrayInterface
     public function offsetSet($offset, $value)
     {
         if ($offset !== null) {
+            if (!isset($this->data[$offset])) {
+                $this->lastInserted = $offset;
+            }
             $this->data[$offset] = $value;
-            $this->lastInserted = $offset;
         } else {
             $this->data[] = $value;
             $this->lastInserted = $this->data->last();
