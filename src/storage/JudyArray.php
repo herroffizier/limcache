@@ -14,6 +14,7 @@ class JudyArray implements ArrayInterface
     protected $data = null;
 
     protected $lastInserted     = null;
+    protected $lastOffset       = null;
 
     public function __construct($type)
     {
@@ -40,11 +41,13 @@ class JudyArray implements ArrayInterface
         if ($offset !== null) {
             if (!isset($this->data[$offset])) {
                 $this->lastInserted = $offset;
+                $this->lastOffset = $offset;
             }
             $this->data[$offset] = $value;
         } else {
             $this->data[] = $value;
             $this->lastInserted = $this->data->last();
+            $this->lastOffset = $offset;
         }
     }
 
